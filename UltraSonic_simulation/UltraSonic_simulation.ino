@@ -34,20 +34,21 @@ distanceCm= duration*0.0340/2;  // Calculating the distance
 distanceInch = duration*0.0133/2;
 
 if(distanceCm >= 40){
-
+  
   digitalWrite(PinoledVerde,0);
   digitalWrite(PinoledVerm,1);
-  lcd.setCursor(0,0);      
-  lcd.print("Limite do Sensor"); 
-  lcd.setCursor(0,1);
-  lcd.print("   Estourado !  ");
+  Serial.println("Limite do Sensor Excedido");
+  //lcd.setCursor(0,0);      
+  //lcd.print("Limite do Sensor"); 
+  //lcd.setCursor(0,1);
+ // lcd.print("   Estourado !  ");
   delay(100);
   digitalWrite(PinoledVerde,0);
   digitalWrite(PinoledVerm,0);
-  lcd.setCursor(0,0);     
-  lcd.print("                "); 
-  lcd.setCursor(0,1);
-  lcd.print("                ");
+ // lcd.setCursor(0,0);     
+ // lcd.print("                "); 
+  //lcd.setCursor(0,1);
+  //lcd.print("                ");
   delay(100);
 
   }
@@ -56,32 +57,40 @@ if(distanceCm <= 25){
 
   digitalWrite(PinoledVerde,0);
   digitalWrite(PinoledVerm,1);
-  
-  lcd.setCursor(0,0);      // Sets the location where text written to the LCD will be displayed
+
+  Serial.print("DistanciaCM: ");
+  Serial.println(distanceCm);
+  /*lcd.setCursor(0,0);      // Sets the location where text written to the LCD will be displayed
   lcd.print("Distance= "); // Prints string "Distance" on the LCD
   lcd.print(distanceCm);   // Prints the distance value from the sensor
-  lcd.print(" cm    ");
+  lcd.print(" cm    ");*/
   delay(20);
-  lcd.setCursor(0,1);
+  Serial.print("DistanciaInch: ");
+  Serial.println(distanceInch);
+  /*lcd.setCursor(0,1);
   lcd.print("Distance= ");
   lcd.print(distanceInch);
-  lcd.print(" inch    ");
+  lcd.print(" inch    ");*/
   delay(20);
 
 }else if((distanceCm > 25) && (distanceCm <= 40)){
 
   digitalWrite(PinoledVerm,0);
   digitalWrite(PinoledVerde,1);
-  
-  lcd.setCursor(0,0);      
+
+  Serial.print("DistanciaCM: ");
+  Serial.println(distanceCm);
+  /*lcd.setCursor(0,0);      
   lcd.print("Distance= ");
   lcd.print(distanceCm);   
-  lcd.print(" cm    ");
+  lcd.print(" cm    ");*/
   delay(20);
-  lcd.setCursor(0,1);
+  Serial.print("DistanciaInch: ");
+  Serial.println(distanceInch);
+  /*lcd.setCursor(0,1);
   lcd.print("Distance= ");
   lcd.print(distanceInch);
-  lcd.print(" inch    ");
+  lcd.print(" inch    ");*/
   delay(20);
     
   }
